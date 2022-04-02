@@ -3,7 +3,7 @@ var momsList = document.getElementById("list");
 var listInput = document.getElementById("title");
 listInput.setSelectionRange(0,0);
 listInput.focus();
-localStorage.setItem("momsListRef",JSON.stringify(list));
+localStorage.setItem("momsListRef",JSON.stringify(momsList));
 
 document.getElementById("submit").addEventListener("click",function createListItem(event){
     event.preventDefault();
