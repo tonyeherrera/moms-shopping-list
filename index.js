@@ -63,7 +63,6 @@ function editContent(event){
     saveEdit.setAttribute("type", "submit");
     saveEdit.setAttribute("onclick","saveEdit(event)");
     saveEdit.textContent = "Save";
-    
     event.target.parentElement.appendChild(editForm);
     var end = oldItem.length
     editForm.setSelectionRange(end,end);
