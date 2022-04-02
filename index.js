@@ -1,9 +1,14 @@
 
-var momsList = document.getElementById("list");
+// var momsList = document.getElementById("list");
+// let localList = localstorage.getItem("momsList")
+//     ?JSON.parse(localStorage.getItem("notes"))
+//     : [];
+// localStorage.setItem("id",JSON.stringify("list"));
+
 var listInput = document.getElementById("title");
 listInput.setSelectionRange(0,0);
 listInput.focus();
-localStorage.setItem("momsListRef",JSON.stringify(momsList));
+
 
 document.getElementById("submit").addEventListener("click",function createListItem(event){
     event.preventDefault();
