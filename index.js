@@ -1,11 +1,13 @@
+
 var momsList = document.getElementById("list");
+var listInput = document.getElementById("title");
+listInput.setSelectionRange(0,0);
+listInput.focus();
 localStorage.setItem("momsListRef",JSON.stringify(list));
-document.getElementById("submit").addEventListener("click", createListItem);
 
-
-
-function createListItem(){
-    var title = document.getElementById("title").value;
+document.getElementById("submit").addEventListener("click",function createListItem(event){
+    event.preventDefault();
+    var title = document.getElementById("title");
     const newLi = document.createElement("li")
     newLi.setAttribute("id", "list > li");
     const newDiv = creatNewItem()
@@ -19,7 +21,8 @@ function createListItem(){
     // console.log(newDiv)
     title.value = "";
     return newLi;
-}
+    
+});
 
 function creatNewItem(){
     var newDiv = document.createElement("div")
@@ -52,19 +55,23 @@ function editContent(event){
     editForm.setAttribute("value", oldItem);
     const saveEdit = document.createElement("button");
     saveEdit.setAttribute("id","saveEdit");
-    saveEdit.setAttribute("type", "button");
+    saveEdit.setAttribute("type", "submit");
     saveEdit.setAttribute("onclick","saveEdit(event)");
     saveEdit.textContent = "Save";
     
     event.target.parentElement.appendChild(editForm);
+    var end = oldItem.length
+    editForm.setSelectionRange(end,end);
+    editForm.focus();
     event.target.parentElement.appendChild(saveEdit);
     event.target.previousSibling.remove();
     event.target.nextSibling.remove();
     event.target.remove();
+    
 }
 
 function saveEdit(event){
-    
+    event.preventDefault();
     const newItem = event.target.previousSibling.value
     var updatedDiv = document.createElement("div")
     updatedDiv.textContent = newItem;
@@ -75,6 +82,7 @@ function saveEdit(event){
     event.target.parentElement.appendChild(removeButton);
     event.target.previousSibling.remove();
     event.target.remove();
+    listInput.focus();
     // // const updatedItem = newItem.value;
     console.log(newItem);
     
