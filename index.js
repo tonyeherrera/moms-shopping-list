@@ -1,14 +1,5 @@
-
-// var momsList = document.getElementById("list");
-// let localList = localstorage.getItem("momsList")
-//     ?JSON.parse(localStorage.getItem("notes"))
-//     : [];
-// localStorage.setItem("id",JSON.stringify("list"));
-
-var listInput = document.getElementById("title");
-listInput.setSelectionRange(0,0);
-listInput.focus();
-
+title.setSelectionRange(0,0);
+title.focus();
 
 document.getElementById("submit").addEventListener("click",function createListItem(event){
     event.preventDefault();
@@ -108,6 +99,11 @@ function removeItem(event){
     
 }
 
-
+var momsCurrentList = {'list': []};
+$('ul').children().each(function(i,v){
+    momsCurrentList.list.push({'id':i,'value':$(v).text()});
+});
+localStorage.setItem('momsCurrentList',JSON.stringify(momsCurrentList));
+var restoredSession = JSON.parse(localStorage.getItem('momsCurrentList'));
 
 
